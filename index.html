@@ -23,11 +23,9 @@
         }
 
         window.addEventListener('deviceorientation', (evt) => {
-            (() => {
-                [`alpha: ${evt.alpha}`, `beta: ${evt.beta}`, `gamma: ${evt.gamma}`].map(paragrafs => {
-                    app.append(paragrafs)
-                })
-            })()
+            [`alpha: ${evt.alpha}`, `beta: ${evt.beta}`, `gamma: ${evt.gamma}`].map(paragrafs => {
+                app.append(paragrafs)
+            })
         })
     </script>
 </body>
