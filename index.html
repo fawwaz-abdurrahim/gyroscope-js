@@ -37,10 +37,11 @@
         // if (window.DeviceOrientationEvent) alert('Device Orientation evt supported');
 
         window.addEventListener('devicemotion', (evt) => {
-            // [`alpha: ${evt.alpha}`, `beta: ${evt.beta}`, `gamma: ${evt.gamma}`].map(paragrafs => {
-            //     app.append(paragrafs)
-            // })
-            app.append(createParagraf([`g-alpha: ${evt.alpha}`, `g-beta: ${evt.beta}`, `g-gamma: ${evt.gamma}`]))
+            app.append(createParagraf([`device motion: alpha: ${evt.accelerationIncludingGravity.z}`, `beta: ${evt.accelerationIncludingGravity.x}`, `gamma: ${evt.accelerationIncludingGravity.y}`]))
+        });
+
+        window.addEventListener('deviceorientation', function (event) {
+            app.append(createParagraf(['device orientation : ' + event.alpha + ' : ' + event.beta + ' : ' + event.gamma]));
         });
     </script>
 </body>
