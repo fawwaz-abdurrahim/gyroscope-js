@@ -91,13 +91,13 @@
                 const current = el.classList;
 
                 if (current.contains('alpha')) {
-                    el.firstChild.innerHTML = "alpha: ";
+                    updateUi(el.firstChild, evt.accelerationIncludingGravity.z)
                 }
                 if (current.contains('beta')) {
-                    el.firstChild.innerHTML = "beta: ";
+                    updateUi(el.firstChild, evt.accelerationIncludingGravity.z)
                 }
                 if (current.contains('gamma')) {
-                    el.firstChild.innerHTML = "gamma: ";
+                    updateUi(el.firstChild, evt.accelerationIncludingGravity.z)
                 }
             }
 
