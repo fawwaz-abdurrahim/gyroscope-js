@@ -88,25 +88,25 @@ window.addEventListener("devicemotion", (evt) => {
 		}
 
 		if (current.contains("acl-include-grav")) {
-			if (current.contains("acl-include-grav alpha")) {
+			if (current.contains("alpha")) {
 				el.firstElementChild.innerHTML = evt.accelerationIncludingGravity.z;
 			}
-			if (current.contains("acl-include-grav beta")) {
+			if (current.contains("beta")) {
 				el.firstElementChild.innerHTML = evt.accelerationIncludingGravity.x;
 			}
-			if (current.contains("acl-include-grav gamma")) {
+			if (current.contains("gamma")) {
 				el.firstElementChild.innerHTML = evt.accelerationIncludingGravity.y;
 			}
 		}
 
 		if (current.contains("rotation-rate")) {
-			if (current.contains("rotation-rate alpha")) {
+			if (current.contains("alpha")) {
 				el.firstElementChild.innerHTML = evt.rotationRate.z;
 			}
-			if (current.contains("rotation-rate beta")) {
+			if (current.contains("beta")) {
 				el.firstElementChild.innerHTML = evt.rotationRate.x;
 			}
-			if (current.contains("rotation-rate gamma")) {
+			if (current.contains("gamma")) {
 				el.firstElementChild.innerHTML = evt.rotationRate.y;
 			}
 		}
