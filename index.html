@@ -88,13 +88,13 @@
                 const current = el.classList;
 
                 if (current.contains('alpha')) {
-                    updateUi(el.firstElementChild, evt.accelerationIncludingGravity.z)
+                    el.firstElementChild = evt.accelerationIncludingGravity.z;
                 }
                 if (current.contains('beta')) {
-                    updateUi(el.firstElementChild, evt.accelerationIncludingGravity.z)
+                    el.firstElementChild = evt.accelerationIncludingGravity.x;
                 }
                 if (current.contains('gamma')) {
-                    updateUi(el.firstElementChild, evt.accelerationIncludingGravity.z)
+                    el.firstElementChild.innerHTML = evt.accelerationIncludingGravity.y;
                 }
             }
 
