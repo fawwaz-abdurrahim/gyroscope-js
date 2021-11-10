@@ -35,7 +35,7 @@
             return el;
         }
 
-        function createELement(tagName, className) {
+        function createElement(tagName, className) {
             let element = document.createElement(tagName);
 
             if (className) {
@@ -55,8 +55,7 @@
 
         }
 
-        const paragrafs = createParagraf(['devicemotion alpha', 'devicemotion beta', 'devicemotion gamma']);
-        const child = createELement("span", 'dm-value');
+        let paragrafs = createParagraf(['devicemotion alpha', 'devicemotion beta', 'devicemotion gamma']);
 
         for (let el of paragrafs) {
             const current = el.classList;
@@ -71,7 +70,6 @@
                 el.innerHTML = "gamma: ";
             }
 
-            el.append(child)
         }
 
         app.append(...paragrafs);
@@ -88,20 +86,23 @@
                 const current = el.classList;
 
                 if (current.contains('alpha')) {
+                    el.append(createElement("span", "dm-value"))
                     el.firstElementChild.innerHTML = evt.accelerationIncludingGravity.z;
                 }
                 if (current.contains('beta')) {
+                    el.append(createElement("span", "dm-value"))
                     el.firstElementChild.innerHTML = evt.accelerationIncludingGravity.x;
                 }
                 if (current.contains('gamma')) {
+                    el.append(createElement("span", "dm-value"))
                     el.firstElementChild.innerHTML = evt.accelerationIncludingGravity.y;
                 }
             }
 
         });
 
-        let [x] = createParagraf('mousemove-x');
-        let [y] = createParagraf('mousemove-x');
+        let [x] = createParagraf(['mousemove-x']);
+        let [y] = createParagraf(['mousemove-x']);
 
         app.append(x, y)
         window.addEventListener('mousemove', (evt) => {
