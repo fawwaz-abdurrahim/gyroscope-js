@@ -101,13 +101,13 @@ window.addEventListener("devicemotion", (evt) => {
 
 		if (current.contains("rotation-rate")) {
 			if (current.contains("alpha")) {
-				el.firstElementChild.innerHTML = evt.rotationRate.z;
+				el.firstElementChild.innerHTML = evt.rotationRate.alpha;
 			}
 			if (current.contains("beta")) {
-				el.firstElementChild.innerHTML = evt.rotationRate.x;
+				el.firstElementChild.innerHTML = evt.rotationRate.beta;
 			}
 			if (current.contains("gamma")) {
-				el.firstElementChild.innerHTML = evt.rotationRate.y;
+				el.firstElementChild.innerHTML = evt.rotationRate.gamma;
 			}
 		}
 	}
@@ -118,8 +118,8 @@ window.addEventListener("devicemotion", (evt) => {
 	boxAclIncludeGrav.style.transform = `skewX(-${evt.accelerationIncludingGravity.x}deg)`;
 	boxAclIncludeGrav.style.transform = `skewY(-${evt.accelerationIncludingGravity.y}deg)`;
 
-	boxRotationRate.style.transform = `skewX(${evt.rotationRate.x}deg)`;
-	boxRotationRate.style.transform = `skewY(${evt.rotationRate.y}deg)`;
+	boxRotationRate.style.transform = `skewX(${evt.rotationRate.beta}deg)`;
+	boxRotationRate.style.transform = `skewY(${evt.rotationRate.gamma}deg)`;
 });
 
 // window.addEventListener('deviceorientation', function (event) {
