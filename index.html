@@ -40,20 +40,10 @@
             // [`alpha: ${evt.alpha}`, `beta: ${evt.beta}`, `gamma: ${evt.gamma}`].map(paragrafs => {
             //     app.append(paragrafs)
             // })
-            alert(evt.alpha)
-            //     setInterval(() => {
-            //         app.append(createParagraf([`g-alpha: ${gyro.x}`, `g-beta: ${gyro.y}`, `g-gamma: ${gyro.z}`]))
-            //     }, 1000);
-        })
-        window.addEventListener('deviceorientation', (evt) => {
-            // [`alpha: ${evt.alpha}`, `beta: ${evt.beta}`, `gamma: ${evt.gamma}`].map(paragrafs => {
-            //     app.append(paragrafs)
-            // })
-            alert(evt.alpha)
-            //     setInterval(() => {
-            //         app.append(createParagraf([`g-alpha: ${gyro.x}`, `g-beta: ${gyro.y}`, `g-gamma: ${gyro.z}`]))
-            //     }, 1000);
-        })
+            setInterval(() => {
+                app.append(createParagraf([`g-alpha: ${evt.alpha}`, `g-beta: ${evt.acceleration.x}`, `g-gamma: ${evt.gamma}`]))
+            }, 1000);
+        });
     </script>
 </body>
 
