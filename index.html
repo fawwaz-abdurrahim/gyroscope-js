@@ -19,30 +19,74 @@
     </div>
     <script>
         const app = document.getElementById("App");
-        const gyro = new Gyroscope({ frequency: 60 });
-        const acl = new Accelerometer({ frequency: 60 });
+        const dm = document.getElementsByClassName('devicemotion');
+        const dor = document.getElementsByClassName('deviceorientation');
 
-        function createParagraf(text) {
-            let p;
-            for (let i = 0; i < text.length; i++) {
+        // create function generate paragraf element
+        // const => getParagrafs
+        // 
+
+        function createParagraf(className) {
+            let el = [], p;
+            for (let i = 0; i < className.length; i++) {
                 p = document.createElement("p");
-                p.classList.add(`para-${i}`);
-                p.innerHTML = text
+                p.setAttribute("class", className[i])
+                el.push(p);
             }
 
-            return p;
+            return el;
         }
 
-        // if (window.DeviceMotionEvent) alert('Device Motion evt supported');
-        // if (window.DeviceOrientationEvent) alert('Device Orientation evt supported');
+        function createELement(tagName, className) {
+            let element = document.createElement(tagName);
+
+            if (className) {
+                element.setAttribute("class", className);
+            }
+
+            return element;
+        }
+
+        function dynamicText(target, value) {
+            target.innerHTML = value;
+        }
+
+        // if (window.DeviceMotionEvent) alert('Device Motion supported');
+        // if (window.DeviceOrientationEvent) alert('Device Orientation supported');
 
         window.addEventListener('devicemotion', (evt) => {
-            app.append(createParagraf([`device motion: alpha: ${evt.accelerationIncludingGravity.z}`, `beta: ${evt.accelerationIncludingGravity.x}`, `gamma: ${evt.accelerationIncludingGravity.y}`]))
+            // app.append(createParagraf([`device motion: alpha: ${evt.accelerationIncludingGravity.z}`, `beta: ${evt.accelerationIncludingGravity.x}`, `gamma: ${evt.accelerationIncludingGravity.y}`]))
+            const paragrafs = createParagraf(['devicemotion alpha', 'devicemotion beta', 'devicemotion gamma']);
+            app.append(...paragrafs);
+
+            [...dm].map(el => {
+                let child;
+                const current = el.classList;
+
+                if (current.contains('alpha')) {
+                    el.innerHTML = "alpha: ";
+                    child = createELement("span", 'dm-value');
+                    dynamicText(child, evt.accelerationIncludingGravity.z)
+                }
+                if (current.contains('beta')) {
+                    el.innerHTML = "beta: ";
+                    child = createELement("span", 'dm-value');
+                    dynamicText(child, evt.accelerationIncludingGravity.x)
+                }
+                if (current.contains('gamma')) {
+                    el.innerHTML = "gamma: ";
+                    child = createELement("span", 'dm-value');
+                    dynamicText(child, evt.accelerationIncludingGravity.y)
+                }
+                el.append(child)
+            });
         });
 
-        window.addEventListener('deviceorientation', function (event) {
-            app.append(createParagraf(['device orientation : ' + event.alpha + ' : ' + event.beta + ' : ' + event.gamma]));
-        });
+        // window.addEventListener('deviceorientation', function (event) {
+        //     const paragrafs = createParagraf(['deviceorientation alpha', 'deviceorientation beta', 'deviceorientation gamma']);
+
+        //     app.append(...paragrafs);
+        // });
     </script>
 </body>
 
