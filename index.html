@@ -57,7 +57,6 @@
 
             let child = createELement("span", 'dm-value');
 
-            paragrafs.map(paragraf => paragraf.append(child));
 
             [...dm].map(el => {
                 const current = el.classList;
@@ -78,6 +77,8 @@
                     // dynamicText(child, evt.accelerationIncludingGravity.y)
                 }
             });
+
+            paragrafs.map(paragraf => paragraf.append(child));
         });
 
         // window.addEventListener('deviceorientation', function (event) {
