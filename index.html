@@ -8,9 +8,12 @@
     <style>
         body {
             background-image: linear-gradient(to right, #82088d, #ad075a);
+            font-family: sans-serif;
         }
 
-        .box {
+        .box-acl,
+        .box-acl-include-grav,
+        .box-rotation-rotate {
             margin: 2rem auto;
             width: 300px;
             height: 300px;
@@ -27,118 +30,22 @@
         <!-- <p class="gyros gyro-alpha">Z / Alpha:</p>
         <p class="gyros gyro-beta">X / Beta:</p>
         <p class="gyros gyro-gamma">Y / Gamma: </p> -->
-        <div class="box">
-
+        <div class="box-acl"></div>
+        <div class="box-acl-include-grav"></div>
+        <div class="box-rotation-rate"></div>
+        <div id="devicemotion-acl">
+            <h1>Acceleration</h1>
+        </div>
+        <div id="devicemotion-acl-include-g">
+            <h1>Acceleration Including Gravity</h1>
+        </div>
+        <div id="devicemotion-rotation-rate">
+            <h1>Rotation Rate</h1>
         </div>
     </div>
-    <script>
-        const app = document.getElementById("App");
-        const dm = document.getElementsByClassName('devicemotion');
-        const dor = document.getElementsByClassName('deviceorientation');
-        const dmChildren = document.getElementsByClassName('dm-value');
-        const box = document.querySelector('.box');
-
-        // create function generate paragraf element
-        // const => getParagrafs
-        // 
-
-        function createParagraf(className) {
-            let el = [], p;
-            for (let i = 0; i < className.length; i++) {
-                p = document.createElement("p");
-                p.setAttribute("class", className[i])
-                el.push(p);
-            }
-
-            return el;
-        }
-
-        function createElement(tagName, className) {
-            let element = document.createElement(tagName);
-
-            if (className) {
-                element.setAttribute("class", className);
-            }
-
-            return element;
-        }
-
-        function updateUi(target, value) {
-
-            if (Array.isArray(target)) {
-                return target.map(el => el.innerHTML = value)
-            } else {
-                return target.innerHTML = value
-            }
-
-        }
-
-        const paragrafs = createParagraf(['devicemotion alpha', 'devicemotion beta', 'devicemotion gamma']);
-
-        for (let el of paragrafs) {
-            const current = el.classList;
-
-            if (current.contains('alpha')) {
-                el.innerHTML = "alpha: ";
-            }
-            if (current.contains('beta')) {
-                el.innerHTML = "beta: ";
-            }
-            if (current.contains('gamma')) {
-                el.innerHTML = "gamma: ";
-            }
-        }
-
-        app.append(...paragrafs);
-
-        for (let el of dm) {
-            el.append(createElement('span', 'dm-value'))
-        }
-
-
-        // if (window.DeviceMotionEvent) alert('Device Motion supported');
-        // if (window.DeviceOrientationEvent) alert('Device Orientation supported');
-
-        window.addEventListener('devicemotion', (evt) => {
-            // app.append(createParagraf([`device motion: alpha: ${evt.accelerationIncludingGravity.z}`, `beta: ${evt.accelerationIncludingGravity.x}`, `gamma: ${evt.accelerationIncludingGravity.y}`]))
-
-            for (let el of dm) {
-                const current = el.classList;
-
-                if (current.contains('alpha')) {
-                    el.firstElementChild.innerHTML = evt.accelerationIncludingGravity.z;
-                }
-                if (current.contains('beta')) {
-                    el.firstElementChild.innerHTML = evt.accelerationIncludingGravity.x;
-                }
-                if (current.contains('gamma')) {
-                    el.firstElementChild.innerHTML = evt.accelerationIncludingGravity.y;
-                }
-            }
-
-            box.style.transform = `skewX(-${evt.accelerationIncludingGravity.x}deg)`;
-            box.style.transform = `skewY(-${evt.accelerationIncludingGravity.y}deg)`;
-
-        });
-
-        let [x] = createParagraf(['mousemove-x']);
-        let [y] = createParagraf(['mousemove-x']);
-
-        app.append(x, y)
-        box.addEventListener('mousemove', (evt) => {
-            // console.log(evt.clientX, evt.clientY)
-            y.innerHTML = evt.clientY;
-            x.innerHTML = evt.clientX;
-
-            // box.style.transform = `skewX(${evt.clientX}deg)`;
-            // box.style.transform = `skewY(${evt.clientY}deg)`;
-        })
-        // window.addEventListener('deviceorientation', function (event) {
-        //     const paragrafs = createParagraf(['deviceorientation alpha', 'deviceorientation beta', 'deviceorientation gamma']);
-
-        //     app.append(...paragrafs);
-        // });
-    </script>
+    <script src="./js/selectors.js"></script>
+    <script src="./js/functions.js"></script>
+    <script src="./main.js"></script>
 </body>
 
 </html>
