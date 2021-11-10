@@ -21,6 +21,7 @@
         const app = document.getElementById("App");
         const dm = document.getElementsByClassName('devicemotion');
         const dor = document.getElementsByClassName('deviceorientation');
+        const dmChildren = document.getElementsByClassName('dm-value')
 
         // create function generate paragraf element
         // const => getParagrafs
@@ -47,38 +48,59 @@
             return element;
         }
 
+        function updateUi(target, value) {
+
+            if (Array.isArray(target)) {
+                return target.map(el => el.innerHTML = value)
+            } else {
+                return target.innerHTML = value
+            }
+
+        }
+
+        const paragrafs = createParagraf(['devicemotion alpha', 'devicemotion beta', 'devicemotion gamma']);
+        const child = createELement("span", 'dm-value');
+
+        for (let el of paragrafs) {
+            const current = el.classList;
+
+            if (current.contains('alpha')) {
+                el.innerHTML = "alpha: ";
+            }
+            if (current.contains('beta')) {
+                el.innerHTML = "beta: ";
+            }
+            if (current.contains('gamma')) {
+                el.innerHTML = "gamma: ";
+            }
+
+            el.append(child)
+        }
+
+        app.append(...paragrafs);
+
+
+
         // if (window.DeviceMotionEvent) alert('Device Motion supported');
         // if (window.DeviceOrientationEvent) alert('Device Orientation supported');
 
         window.addEventListener('devicemotion', (evt) => {
             // app.append(createParagraf([`device motion: alpha: ${evt.accelerationIncludingGravity.z}`, `beta: ${evt.accelerationIncludingGravity.x}`, `gamma: ${evt.accelerationIncludingGravity.y}`]))
-            const paragrafs = createParagraf(['devicemotion alpha', 'devicemotion beta', 'devicemotion gamma']);
-            app.append(...paragrafs);
 
-            let child = createELement("span", 'dm-value');
-
-
-            [...dm].map(el => {
+            for (let el of dm) {
                 const current = el.classList;
 
                 if (current.contains('alpha')) {
-                    el.innerHTML = "alpha: ";
-                    child.innerHTML = evt.accelerationIncludingGravity.z;
-                    // dynamicText(child, evt.accelerationIncludingGravity.z)
+                    el.firstChild.innerHTML = "alpha: ";
                 }
                 if (current.contains('beta')) {
-                    el.innerHTML = "beta: ";
-                    child.innerHTML = evt.accelerationIncludingGravity.x;
-                    // dynamicText(child, evt.accelerationIncludingGravity.x)
+                    el.firstChild.innerHTML = "beta: ";
                 }
                 if (current.contains('gamma')) {
-                    el.innerHTML = "gamma: ";
-                    child.innerHTML = evt.accelerationIncludingGravity.y;
-                    // dynamicText(child, evt.accelerationIncludingGravity.y)
+                    el.firstChild.innerHTML = "gamma: ";
                 }
-            });
+            }
 
-            paragrafs.map(paragraf => paragraf.append(child));
         });
 
         // window.addEventListener('deviceorientation', function (event) {
