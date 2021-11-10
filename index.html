@@ -88,10 +88,10 @@
                 const current = el.classList;
 
                 if (current.contains('alpha')) {
-                    el.firstElementChild = evt.accelerationIncludingGravity.z;
+                    el.firstElementChild.innerHTML = evt.accelerationIncludingGravity.z;
                 }
                 if (current.contains('beta')) {
-                    el.firstElementChild = evt.accelerationIncludingGravity.x;
+                    el.firstElementChild.innerHTML = evt.accelerationIncludingGravity.x;
                 }
                 if (current.contains('gamma')) {
                     el.firstElementChild.innerHTML = evt.accelerationIncludingGravity.y;
