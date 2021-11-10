@@ -10,12 +10,9 @@
 
 <body>
     <div id="App">
-        <p class="gyros gyro-alpha">Z / Alpha:</p>
+        <!-- <p class="gyros gyro-alpha">Z / Alpha:</p>
         <p class="gyros gyro-beta">X / Beta:</p>
-        <p class="gyros gyro-gamma">Y / Gamma: </p>
-        <p class="gyros gyro-alpha">Z / Alpha:</p>
-        <p class="gyros gyro-beta">X / Beta:</p>
-        <p class="gyros gyro-gamma">Y / Gamma: </p>
+        <p class="gyros gyro-gamma">Y / Gamma: </p> -->
     </div>
     <script>
         const app = document.getElementById("App");
@@ -91,18 +88,28 @@
                 const current = el.classList;
 
                 if (current.contains('alpha')) {
-                    updateUi(el.firstChild, evt.accelerationIncludingGravity.z)
+                    updateUi(el.firstElementChild, evt.accelerationIncludingGravity.z)
                 }
                 if (current.contains('beta')) {
-                    updateUi(el.firstChild, evt.accelerationIncludingGravity.z)
+                    updateUi(el.firstElementChild, evt.accelerationIncludingGravity.z)
                 }
                 if (current.contains('gamma')) {
-                    updateUi(el.firstChild, evt.accelerationIncludingGravity.z)
+                    updateUi(el.firstElementChild, evt.accelerationIncludingGravity.z)
                 }
             }
 
         });
 
+        let [x] = createParagraf('mousemove-x');
+        let [y] = createParagraf('mousemove-x');
+
+        app.append(x, y)
+        window.addEventListener('mousemove', (evt) => {
+            // console.log(evt.clientX, evt.clientY)
+            y.innerHTML = evt.clientY;
+            x.innerHTML = evt.clientX;
+
+        })
         // window.addEventListener('deviceorientation', function (event) {
         //     const paragrafs = createParagraf(['deviceorientation alpha', 'deviceorientation beta', 'deviceorientation gamma']);
 
