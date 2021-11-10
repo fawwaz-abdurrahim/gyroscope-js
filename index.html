@@ -55,29 +55,28 @@
             const paragrafs = createParagraf(['devicemotion alpha', 'devicemotion beta', 'devicemotion gamma']);
             app.append(...paragrafs);
 
-            let child;
+            let child = createELement("span", 'dm-value');
+
+            paragrafs.map(paragraf => paragraf.append(child));
+
             [...dm].map(el => {
                 const current = el.classList;
 
                 if (current.contains('alpha')) {
                     el.innerHTML = "alpha: ";
-                    child = createELement("span", 'dm-value');
                     child.innerHTML = evt.accelerationIncludingGravity.z;
                     // dynamicText(child, evt.accelerationIncludingGravity.z)
                 }
                 if (current.contains('beta')) {
                     el.innerHTML = "beta: ";
-                    child = createELement("span", 'dm-value');
                     child.innerHTML = evt.accelerationIncludingGravity.x;
                     // dynamicText(child, evt.accelerationIncludingGravity.x)
                 }
                 if (current.contains('gamma')) {
                     el.innerHTML = "gamma: ";
-                    child = createELement("span", 'dm-value');
                     child.innerHTML = evt.accelerationIncludingGravity.y;
                     // dynamicText(child, evt.accelerationIncludingGravity.y)
                 }
-                el.append(child)
             });
         });
 
