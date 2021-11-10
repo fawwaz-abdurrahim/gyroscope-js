@@ -14,18 +14,25 @@
     </div>
     <script>
         const app = document.getElementById("App");
+        const gyro = new Gyroscope({ frequency: 60 });
+        const acl = new Accelerometer({ frequency: 60 });
 
         function createParagraf(text) {
-            const p = document.createElement("p");
-            p.innerHTML = text
+            let p;
+            for (let i = 0; i < text.length; i++) {
+                p = document.createElement("p");
+                p.classList.add(`para-${i}`);
+                p.innerHTML = text
+            }
 
             return p;
         }
 
-        window.addEventListener('deviceorientation', (evt) => {
-            [`alpha: ${evt.alpha}`, `beta: ${evt.beta}`, `gamma: ${evt.gamma}`].map(paragrafs => {
-                app.append(paragrafs)
-            })
+        window.addEventListener('reading', () => {
+            // [`alpha: ${evt.alpha}`, `beta: ${evt.beta}`, `gamma: ${evt.gamma}`].map(paragrafs => {
+            //     app.append(paragrafs)
+            // })
+            createParagraf([`g-alpha: ${gyro.x}`, `g-beta: ${gyro.y}`, `g-gamma: ${gyro.z}`]).map(element => app.append(element))
         })
     </script>
 </body>
