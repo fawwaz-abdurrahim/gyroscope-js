@@ -32,7 +32,7 @@
             // [`alpha: ${evt.alpha}`, `beta: ${evt.beta}`, `gamma: ${evt.gamma}`].map(paragrafs => {
             //     app.append(paragrafs)
             // })
-            createParagraf([`g-alpha: ${gyro.x}`, `g-beta: ${gyro.y}`, `g-gamma: ${gyro.z}`]).map(element => app.append(element))
+            app.append(([`g-alpha: ${gyro.x}`, `g-beta: ${gyro.y}`, `g-gamma: ${gyro.z}`]))
         })
     </script>
 </body>
