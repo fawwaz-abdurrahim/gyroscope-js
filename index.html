@@ -33,16 +33,14 @@
             return p;
         }
 
-        if (window.DeviceMotionEvent) alert('Device Motion evt supported');
-        if (window.DeviceOrientationEvent) alert('Device Orientation evt supported');
+        // if (window.DeviceMotionEvent) alert('Device Motion evt supported');
+        // if (window.DeviceOrientationEvent) alert('Device Orientation evt supported');
 
         window.addEventListener('devicemotion', (evt) => {
             // [`alpha: ${evt.alpha}`, `beta: ${evt.beta}`, `gamma: ${evt.gamma}`].map(paragrafs => {
             //     app.append(paragrafs)
             // })
-            setInterval(() => {
-                app.append(createParagraf([`g-alpha: ${evt.alpha}`, `g-beta: ${evt.acceleration.x}`, `g-gamma: ${evt.gamma}`]))
-            }, 1000);
+            app.append(createParagraf([`g-alpha: ${evt.alpha}`, `g-beta: ${evt.beta}`, `g-gamma: ${evt.gamma}`]))
         });
     </script>
 </body>
