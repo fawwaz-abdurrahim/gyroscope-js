@@ -11,15 +11,19 @@
             font-family: sans-serif;
         }
 
-        .box-acl,
-        .box-acl-include-grav,
-        .box-rotation-rotate {
+        .box {
+            box-sizing: border-box;
             margin: 2rem auto;
+            padding: 2rem;
             width: 300px;
             height: 300px;
             background-color: #ffffff27;
             box-shadow: 1px 2px 8px -4px #3e3e3e94;
             position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
         }
     </style>
     <title>Document</title>
@@ -30,17 +34,23 @@
         <!-- <p class="gyros gyro-alpha">Z / Alpha:</p>
         <p class="gyros gyro-beta">X / Beta:</p>
         <p class="gyros gyro-gamma">Y / Gamma: </p> -->
-        <div class="box-acl"></div>
-        <div class="box-acl-include-grav"></div>
-        <div class="box-rotation-rate"></div>
-        <div id="devicemotion-acl">
-            <h1>Acceleration</h1>
+        <div class="box box-acl">
+            <div id="devicemotion-acl">
+                <h1>Acceleration</h1>
+            </div>
+
         </div>
-        <div id="devicemotion-acl-include-g">
-            <h1>Acceleration Including Gravity</h1>
+        <div class="box box-acl-include-grav">
+            <div id="devicemotion-acl-include-g">
+                <h1>Acceleration Including Gravity</h1>
+            </div>
+
         </div>
-        <div id="devicemotion-rotation-rate">
-            <h1>Rotation Rate</h1>
+        <div class="box box-rotation-rate">
+            <div id="devicemotion-rotation-rate">
+                <h1>Rotation Rate</h1>
+            </div>
+
         </div>
     </div>
     <script src="./js/selectors.js"></script>

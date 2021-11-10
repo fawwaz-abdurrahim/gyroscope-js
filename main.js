@@ -103,13 +103,13 @@ window.addEventListener("devicemotion", (evt) => {
 	for (let el of dm) {
 		const current = el.classList;
 
-		if (current.contains("rotation-rotate alpha")) {
+		if (current.contains("rotation-rate alpha")) {
 			el.firstElementChild.innerHTML = evt.rotationRate.z;
 		}
-		if (current.contains("rotation-rotate beta")) {
+		if (current.contains("rotation-rate beta")) {
 			el.firstElementChild.innerHTML = evt.rotationRate.x;
 		}
-		if (current.contains("rotation-rotate gamma")) {
+		if (current.contains("rotation-rate gamma")) {
 			el.firstElementChild.innerHTML = evt.rotationRate.y;
 		}
 	}
