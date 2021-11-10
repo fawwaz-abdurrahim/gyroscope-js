@@ -116,8 +116,8 @@
                 }
             }
 
-            box.style.transform = `skewX(${evt.accelerationIncludingGravity.x}deg)`;
-            box.style.transform = `skewY(${evt.accelerationIncludingGravity.y}deg)`;
+            box.style.transform = `skewX(-${evt.accelerationIncludingGravity.x}deg)`;
+            box.style.transform = `skewY(-${evt.accelerationIncludingGravity.y}deg)`;
 
         });
 
