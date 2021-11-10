@@ -75,42 +75,40 @@ window.addEventListener("devicemotion", (evt) => {
 	for (let el of dm) {
 		const current = el.classList;
 
-		if (current.contains("acl alpha")) {
-			el.firstElementChild.innerHTML = evt.acceleration.z;
+		if (current.contains("acl")) {
+			if (current.contains("alpha")) {
+				el.firstElementChild.innerHTML = evt.acceleration.z;
+			}
+			if (current.contains("beta")) {
+				el.firstElementChild.innerHTML = evt.acceleration.x;
+			}
+			if (current.contains("gamma")) {
+				el.firstElementChild.innerHTML = evt.acceleration.y;
+			}
 		}
-		if (current.contains("acl beta")) {
-			el.firstElementChild.innerHTML = evt.acceleration.x;
-		}
-		if (current.contains("acl gamma")) {
-			el.firstElementChild.innerHTML = evt.acceleration.y;
-		}
-	}
 
-	for (let el of dm) {
-		const current = el.classList;
+		if (current.contains("acl-include-grav")) {
+			if (current.contains("acl-include-grav alpha")) {
+				el.firstElementChild.innerHTML = evt.accelerationIncludingGravity.z;
+			}
+			if (current.contains("acl-include-grav beta")) {
+				el.firstElementChild.innerHTML = evt.accelerationIncludingGravity.x;
+			}
+			if (current.contains("acl-include-grav gamma")) {
+				el.firstElementChild.innerHTML = evt.accelerationIncludingGravity.y;
+			}
+		}
 
-		if (current.contains("acl-include-grav alpha")) {
-			el.firstElementChild.innerHTML = evt.accelerationIncludingGravity.z;
-		}
-		if (current.contains("acl-include-grav beta")) {
-			el.firstElementChild.innerHTML = evt.accelerationIncludingGravity.x;
-		}
-		if (current.contains("acl-include-grav gamma")) {
-			el.firstElementChild.innerHTML = evt.accelerationIncludingGravity.y;
-		}
-	}
-
-	for (let el of dm) {
-		const current = el.classList;
-
-		if (current.contains("rotation-rate alpha")) {
-			el.firstElementChild.innerHTML = evt.rotationRate.z;
-		}
-		if (current.contains("rotation-rate beta")) {
-			el.firstElementChild.innerHTML = evt.rotationRate.x;
-		}
-		if (current.contains("rotation-rate gamma")) {
-			el.firstElementChild.innerHTML = evt.rotationRate.y;
+		if (current.contains("rotation-rate")) {
+			if (current.contains("rotation-rate alpha")) {
+				el.firstElementChild.innerHTML = evt.rotationRate.z;
+			}
+			if (current.contains("rotation-rate beta")) {
+				el.firstElementChild.innerHTML = evt.rotationRate.x;
+			}
+			if (current.contains("rotation-rate gamma")) {
+				el.firstElementChild.innerHTML = evt.rotationRate.y;
+			}
 		}
 	}
 
