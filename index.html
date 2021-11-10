@@ -47,10 +47,6 @@
             return element;
         }
 
-        function dynamicText(target, value) {
-            target.innerHTML = value;
-        }
-
         // if (window.DeviceMotionEvent) alert('Device Motion supported');
         // if (window.DeviceOrientationEvent) alert('Device Orientation supported');
 
@@ -59,24 +55,27 @@
             const paragrafs = createParagraf(['devicemotion alpha', 'devicemotion beta', 'devicemotion gamma']);
             app.append(...paragrafs);
 
+            let child;
             [...dm].map(el => {
-                let child;
                 const current = el.classList;
 
                 if (current.contains('alpha')) {
                     el.innerHTML = "alpha: ";
                     child = createELement("span", 'dm-value');
-                    dynamicText(child, evt.accelerationIncludingGravity.z)
+                    child.innerHTML = evt.accelerationIncludingGravity.z;
+                    // dynamicText(child, evt.accelerationIncludingGravity.z)
                 }
                 if (current.contains('beta')) {
                     el.innerHTML = "beta: ";
                     child = createELement("span", 'dm-value');
-                    dynamicText(child, evt.accelerationIncludingGravity.x)
+                    child.innerHTML = evt.accelerationIncludingGravity.x;
+                    // dynamicText(child, evt.accelerationIncludingGravity.x)
                 }
                 if (current.contains('gamma')) {
                     el.innerHTML = "gamma: ";
                     child = createELement("span", 'dm-value');
-                    dynamicText(child, evt.accelerationIncludingGravity.y)
+                    child.innerHTML = evt.accelerationIncludingGravity.y;
+                    // dynamicText(child, evt.accelerationIncludingGravity.y)
                 }
                 el.append(child)
             });
