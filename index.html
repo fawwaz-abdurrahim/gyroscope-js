@@ -116,8 +116,8 @@
                 }
             }
 
-            box.style.transform = `translateX(${evt.accelerationIncludingGravity.x}px)`;
-            box.style.transform = `translateY(${evt.accelerationIncludingGravity.y}px)`;
+            box.style.transform = `skewX(${evt.accelerationIncludingGravity.x}deg)`;
+            box.style.transform = `skewY(${evt.accelerationIncludingGravity.y}deg)`;
 
         });
 
@@ -125,11 +125,13 @@
         let [y] = createParagraf(['mousemove-x']);
 
         app.append(x, y)
-        window.addEventListener('mousemove', (evt) => {
+        box.addEventListener('mousemove', (evt) => {
             // console.log(evt.clientX, evt.clientY)
             y.innerHTML = evt.clientY;
             x.innerHTML = evt.clientX;
 
+            // box.style.transform = `skewX(${evt.clientX}deg)`;
+            // box.style.transform = `skewY(${evt.clientY}deg)`;
         })
         // window.addEventListener('deviceorientation', function (event) {
         //     const paragrafs = createParagraf(['deviceorientation alpha', 'deviceorientation beta', 'deviceorientation gamma']);
