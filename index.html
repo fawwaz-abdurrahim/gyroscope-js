@@ -10,7 +10,12 @@
 
 <body>
     <div id="App">
-
+        <p class="gyros gyro-alpha">Z / Alpha:</p>
+        <p class="gyros gyro-beta">X / Beta:</p>
+        <p class="gyros gyro-gamma">Y / Gamma: </p>
+        <p class="gyros gyro-alpha">Z / Alpha:</p>
+        <p class="gyros gyro-beta">X / Beta:</p>
+        <p class="gyros gyro-gamma">Y / Gamma: </p>
     </div>
     <script>
         const app = document.getElementById("App");
@@ -28,13 +33,26 @@
             return p;
         }
 
-        window.addEventListener('reading', () => {
+        if (window.DeviceMotionEvent) alert('Device Motion evt supported');
+        if (window.DeviceOrientationEvent) alert('Device Orientation evt supported');
+
+        window.addEventListener('devicemotion', (evt) => {
             // [`alpha: ${evt.alpha}`, `beta: ${evt.beta}`, `gamma: ${evt.gamma}`].map(paragrafs => {
             //     app.append(paragrafs)
             // })
-            setInterval(() => {
-                app.append(createParagraf([`g-alpha: ${gyro.x}`, `g-beta: ${gyro.y}`, `g-gamma: ${gyro.z}`]))
-            }, 1000);
+            alert(e.alpha)
+            //     setInterval(() => {
+            //         app.append(createParagraf([`g-alpha: ${gyro.x}`, `g-beta: ${gyro.y}`, `g-gamma: ${gyro.z}`]))
+            //     }, 1000);
+        })
+        window.addEventListener('deviceorientation', (evt) => {
+            // [`alpha: ${evt.alpha}`, `beta: ${evt.beta}`, `gamma: ${evt.gamma}`].map(paragrafs => {
+            //     app.append(paragrafs)
+            // })
+            alert(e.alpha)
+            //     setInterval(() => {
+            //         app.append(createParagraf([`g-alpha: ${gyro.x}`, `g-beta: ${gyro.y}`, `g-gamma: ${gyro.z}`]))
+            //     }, 1000);
         })
     </script>
 </body>
