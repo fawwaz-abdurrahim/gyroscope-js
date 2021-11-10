@@ -55,11 +55,12 @@
 
         }
 
-        let paragrafs = createParagraf(['devicemotion alpha', 'devicemotion beta', 'devicemotion gamma']);
+        const paragrafs = createParagraf(['devicemotion alpha', 'devicemotion beta', 'devicemotion gamma']);
 
         for (let el of paragrafs) {
             const current = el.classList;
 
+            el.append("span", "dm-value");
             if (current.contains('alpha')) {
                 el.innerHTML = "alpha: ";
             }
@@ -69,11 +70,13 @@
             if (current.contains('gamma')) {
                 el.innerHTML = "gamma: ";
             }
-
         }
 
         app.append(...paragrafs);
 
+        for (let el of dm) {
+            el.append(createElement('span', 'dm-value'))
+        }
 
 
         // if (window.DeviceMotionEvent) alert('Device Motion supported');
@@ -86,15 +89,12 @@
                 const current = el.classList;
 
                 if (current.contains('alpha')) {
-                    el.append(createElement("span", "dm-value"))
                     el.firstElementChild.innerHTML = evt.accelerationIncludingGravity.z;
                 }
                 if (current.contains('beta')) {
-                    el.append(createElement("span", "dm-value"))
                     el.firstElementChild.innerHTML = evt.accelerationIncludingGravity.x;
                 }
                 if (current.contains('gamma')) {
-                    el.append(createElement("span", "dm-value"))
                     el.firstElementChild.innerHTML = evt.accelerationIncludingGravity.y;
                 }
             }
